@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Guardar Fotos</title>
+</head>
+<body>
+    <h1>Guardar Fotos</h1>
+    <input type="file" id="inputFile" accept="image/*">
+    <button onclick="guardarFoto()">Guardar</button>
+
+    <script>
+        function guardarFoto() {
+            const inputFile = document.getElementById('inputFile');
+            const file = inputFile.files[0];
+
+            if (file) {
+                const reader = new FileReader();
+
+                reader.onload = function (event) {
+                    const imageData = event.target.result;
+                    // Aquí podrías enviar la imagen a un servidor o almacenarla localmente.
+                    console.log('Imagen guardada:', imageData);
+                };
+
+                reader.readAsDataURL(file);
+            } else {
+                console.log('No se seleccionó ninguna foto.');
+            }
+        }
+    </script>
+</body>
+</html>
